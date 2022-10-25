@@ -1,5 +1,4 @@
 import { Link } from "react-router-dom";
-import ROUTES from "../../app/routes";
 
 export default function Quizzes() {
   const quizzes = {}; // replace this with a call to your selector to get all the quizzes in state
@@ -8,12 +7,12 @@ export default function Quizzes() {
       <h1>Quizzes</h1>
       <ul className="quizzes-list">
         {Object.values(quizzes).map((quiz) => (
-          <Link key={quiz.id} to={ROUTES.quizRoute(quiz.id)}>
+          <Link key={quiz.id} to={`/quizzes/${quiz.id}`}>
             <li className="quiz">{quiz.name}</li>
           </Link>
         ))}
       </ul>
-      <Link to={ROUTES.newQuizRoute()} className="button">
+      <Link to="/quizzes/new" className="button">
         Create New Quiz
       </Link>
     </section>

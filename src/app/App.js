@@ -24,12 +24,12 @@ export default function App() {
             </NavLink>
           </li>
           <li>
-            <NavLink to={ROUTES.quizzesRoute()} className={({ isActive }) => isActive ? 'active' : ''}>
+            <NavLink to="/quizzes" className={({ isActive }) => isActive ? 'active' : ''}>
               Quizzes
             </NavLink>
           </li>
           <li>
-            <NavLink to={ROUTES.newQuizRoute()} className={({ isActive }) => isActive ? 'active' : ''}>
+            <NavLink to="/quizzes/new" className={({ isActive }) => isActive ? 'active' : ''}>
               New Quiz
             </NavLink>
           </li>
