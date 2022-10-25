@@ -1,6 +1,5 @@
 import NewTopicForm from "../../components/NewTopicForm";
 import { Link } from "react-router-dom";
-import ROUTES from "../../app/routes";
 
 export default function Topics() {
   const topics = {}; // replace this with a call to your selector to select all the topics in state
@@ -11,7 +10,7 @@ export default function Topics() {
       <ul className="topics-list">
         {Object.values(topics).map((topic) => (
           <li className="topic" key={topic.id}>
-          <Link to={ROUTES.topicRoute(topic.id)} className="topic-link">
+          <Link to={`/topics/${topic.id}`} className="topic-link">
            <div className="topic-container">
              <img src={topic.icon} alt="" />
              <div className="text-content">
@@ -24,7 +23,7 @@ export default function Topics() {
         ))}
       </ul>
       <Link
-        to={ROUTES.newTopicRoute()}
+        to="/topics/new"
         className="button create-new-topic-button"
       >
         Create New Topic
