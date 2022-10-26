@@ -1,4 +1,4 @@
-import NewTopicForm from "../../components/NewTopicForm";
+//import NewTopicForm from "../../components/NewTopicForm";
 import { Link, useParams } from "react-router-dom";
 
 export default function Topic() {

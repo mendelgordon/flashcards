@@ -1,4 +1,4 @@
-import { BrowserRouter as Router, Routes, Route, NavLink, useMatch } from "react-router-dom";
+import { BrowserRouter as Router, Routes, Route, NavLink, Outlet } from "react-router-dom";
 import NewQuizForm from "../components/NewQuizForm";
 import NewTopicForm from "../components/NewTopicForm";
 import Topics from "../features/topics/Topics";
@@ -28,51 +28,19 @@ export default function App() {
 					</li>
 				</ul>
 			</nav>
-
+			<Outlet />
 			<Routes>
-				<Route path="/topics" element={<TopicsRoutes />} />
-				<Route path="/quizzes" element={<QuizRoutes />} />
+				<Route path="topics">
+					<Route index element={<Topics />} />
+					<Route path={`new`} element={<NewTopicForm />} />
+					<Route path={`:topicId`} element={<Topic />} />
+				</Route>
+				<Route path="quizzes">
+					<Route index element={<Quizzes />} />
+					<Route path={`new`} element={<NewQuizForm />} />
+					<Route path={`:quizId`} element={<Quiz />} />
+				</Route>
 			</Routes>
 		</Router>
-	);
-}
-
-function TopicsRoutes() {
-	let match = useMatch();
-
-	return (
-		<>
-			<Routes>
-				<Route path={`${match.path}/new`}>
-					<NewTopicForm />
-				</Route>
-				<Route path={`${match.path}/:topicId`}>
-					<Topic />
-				</Route>
-				<Route path={`${match.path}`}>
-					<Topics />
-				</Route>
-			</Routes>
-		</>
-	);
-}
-
-function QuizRoutes() {
-	let match = useMatch();
-
-	return (
-		<>
-			<Routes>
-				<Route path={`${match.path}/new`}>
-					<NewQuizForm />
-				</Route>
-				<Route path={`${match.path}/:quizId`}>
-					<Quiz />
-				</Route>
-				<Route path={`${match.path}`}>
-					<Quizzes />
-				</Route>
-			</Routes>
-		</>
 	);
 }

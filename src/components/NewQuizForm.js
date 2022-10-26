@@ -20,7 +20,7 @@ export default function NewQuizForm() {
     // create the new cards here and add each card's id to cardIds
     // create the new quiz here
 
-    navigate.push("/quizzes");
+    navigate("/quizzes");
   };
 
   const addCardInputs = (e) => {

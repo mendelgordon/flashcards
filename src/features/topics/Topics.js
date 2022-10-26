@@ -1,8 +1,10 @@
-import NewTopicForm from "../../components/NewTopicForm";
+// import NewTopicForm from "../../components/NewTopicForm";
 import { Link } from "react-router-dom";
+import { useSelector } from "react-redux";
+import { selectTopics } from "./topicsSlice";
 
 export default function Topics() {
-  const topics = {}; // replace this with a call to your selector to select all the topics in state
+  const topics = useSelector(selectTopics);
 
   return (
     <section className="center">
@@ -10,22 +12,19 @@ export default function Topics() {
       <ul className="topics-list">
         {Object.values(topics).map((topic) => (
           <li className="topic" key={topic.id}>
-          <Link to={`/topics/${topic.id}`} className="topic-link">
-           <div className="topic-container">
-             <img src={topic.icon} alt="" />
-             <div className="text-content">
-               <h2>{topic.name}</h2>
-               <p>{topic.quizIds.length} Quizzes</p>
-             </div>
-           </div>
-         </Link>
+            <Link to={`/topics/${topic.id}`} className="topic-link">
+              <div className="topic-container">
+                <img src={topic.icon} alt="" />
+                <div className="text-content">
+                  <h2>{topic.name}</h2>
+                  <p>{topic.quizIds.length} Quizzes</p>
+                </div>
+              </div>
+            </Link>
           </li>
         ))}
       </ul>
-      <Link
-        to="/topics/new"
-        className="button create-new-topic-button"
-      >
+      <Link to="/topics/new" className="button create-new-topic-button">
         Create New Topic
       </Link>
     </section>
