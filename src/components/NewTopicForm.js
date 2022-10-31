@@ -25,7 +25,7 @@ export default function NewTopicForm() {
 				icon,
 			})
 		);
-		navigate.push(ROUTES.topicsRoute());
+		navigate(ROUTES.topicsRoute());
 	};
 
 	return (
