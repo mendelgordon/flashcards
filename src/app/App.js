@@ -5,6 +5,7 @@ import Topics from "../features/topics/Topics";
 import Topic from "../features/topics/Topic";
 import Quiz from "../features/quizzes/Quiz";
 import Quizzes from "../features/quizzes/Quizzes";
+import ROUTES from "./routes";
 
 export default function App() {
 	return (
@@ -12,17 +13,17 @@ export default function App() {
 			<nav>
 				<ul>
 					<li>
-						<NavLink to="/topics" className={({ isActive }) => (isActive ? "active" : "")}>
+						<NavLink to={ROUTES.topicsRoute()} className={({ isActive }) => (isActive ? "active" : "")}>
 							Topics
 						</NavLink>
 					</li>
 					<li>
-						<NavLink to="/quizzes" className={({ isActive }) => (isActive ? "active" : "")}>
+						<NavLink to={ROUTES.quizzesRoute()} className={({ isActive }) => (isActive ? "active" : "")}>
 							Quizzes
 						</NavLink>
 					</li>
 					<li>
-						<NavLink to="/quizzes/new" className={({ isActive }) => (isActive ? "active" : "")}>
+						<NavLink to={ROUTES.newQuizRoute()} className={({ isActive }) => (isActive ? "active" : "")}>
 							New Quiz
 						</NavLink>
 					</li>

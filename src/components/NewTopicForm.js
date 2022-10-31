@@ -1,16 +1,15 @@
 import { useState } from "react";
+import { useDispatch } from "react-redux";
 import { useNavigate } from "react-router-dom";
+import ROUTES from "../app/routes";
 import { v4 as uuidv4 } from "uuid";
 import { ALL_ICONS } from "../data/icons";
-/* import addTopic and dispatch it from the event handler that runs when the new topic form is submitted */
 import { addTopic } from "../features/topics/topicsSlice";
-import { useDispatch } from "react-redux";
 
 export default function NewTopicForm() {
 	const [name, setName] = useState("");
 	const [icon, setIcon] = useState("");
 	const navigate = useNavigate();
-	/* import dispatch from react-redux */
 	const dispatch = useDispatch();
 
 	const handleSubmit = (e) => {
@@ -19,7 +18,6 @@ export default function NewTopicForm() {
 			return;
 		}
 
-		/* dispatch the addTopic action creator, passing in an object with the id, name, and icon properties. */
 		dispatch(
 			addTopic({
 				id: uuidv4(),
@@ -27,7 +25,7 @@ export default function NewTopicForm() {
 				icon,
 			})
 		);
-		navigate("/topics");
+		navigate.push(ROUTES.topicsRoute());
 	};
 
 	return (
